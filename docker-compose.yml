@@ -1,6 +1,6 @@
 services:
   gmod:
-    image: ceifa/garrysmod:ubuntu
+    image: ceifa/garrysmod:${IMAGE_TAG:-latest}
     container_name: gmod
     ports:
       - "27015:27015/udp"

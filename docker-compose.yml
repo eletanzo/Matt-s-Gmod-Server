@@ -1,0 +1,17 @@
+services:
+  gmod:
+    image: ceifa/garrysmod:ubuntu
+    container_name: gmod
+    ports:
+      - "27015:27015/udp"
+      - "27005:27005/udp"
+      - "27015:27015/tcp"
+    environment:
+      - ARGS=+HOST_WORKSHOP_COLLECTION ${TTT_WORKSHOP_ID:-181792718}
+      - GAMEMODE=terrortown
+      - MAXPLAYERS=${TTT_MAXPLAYERS:-16}
+      - MAP=${TTT_MAP:-ttt_minecraft_b5}
+      - PORT=27015
+    volumes:
+      - ./src/configs/server.cfg:/home/gmod/server/garrysmod/cfg/server.cfg
+    restart: unless-stopped
